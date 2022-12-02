@@ -37,6 +37,8 @@
         <Compile Include="FuncEnumeratorCountTests.cs" />
         <Compile Include="FuncEnumeratorTimeTests.cs" />
         <Compile Include="FuncTimeTests.cs" />
+        <Compile Include="IteratorCountTests.cs" />
+        <Compile Include="IteratorTimeTests.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>
     <ItemGroup>

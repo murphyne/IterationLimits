@@ -34,6 +34,8 @@
     </PropertyGroup>
     <ItemGroup>
         <Compile Include="FuncCountTests.cs" />
+        <Compile Include="FuncEnumeratorCountTests.cs" />
+        <Compile Include="FuncEnumeratorTimeTests.cs" />
         <Compile Include="FuncTimeTests.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>

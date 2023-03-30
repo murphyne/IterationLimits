@@ -3,4 +3,10 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
+  <PropertyGroup>
+    <PackRelease>true</PackRelease>
+    <PublishRelease>true</PublishRelease>
+    <EnablePackageValidation>true</EnablePackageValidation>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
 </Project>

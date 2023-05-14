@@ -1,8 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IterationLimits", "IterationLimits\IterationLimits.csproj", "{C7A37ECF-2573-4EFC-9B09-8E5FF8F6819A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IterationLimits", "src\IterationLimits\IterationLimits.csproj", "{C7A37ECF-2573-4EFC-9B09-8E5FF8F6819A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IterationLimitsTests", "IterationLimitsTests\IterationLimitsTests.csproj", "{03FE93A2-AD9E-43E2-AB32-F9D766B73BA1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IterationLimitsTests", "src\IterationLimitsTests\IterationLimitsTests.csproj", "{03FE93A2-AD9E-43E2-AB32-F9D766B73BA1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

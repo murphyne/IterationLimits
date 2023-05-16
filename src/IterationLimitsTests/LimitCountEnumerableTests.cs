@@ -5,7 +5,7 @@ using NUnit.Framework;
 namespace IterationLimitsTests
 {
     [TestFixture]
-    public class EnumerableCountTests
+    public class LimitCountEnumerableTests
     {
         private int _counter = 0;
         private const int Limited = 1_000;

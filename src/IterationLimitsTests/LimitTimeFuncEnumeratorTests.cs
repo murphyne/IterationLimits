@@ -6,7 +6,7 @@ using NUnit.Framework;
 namespace IterationLimitsTests
 {
     [TestFixture]
-    public class FuncEnumeratorTimeTests
+    public class LimitTimeFuncEnumeratorTests
     {
         private TimeSpan Elapsed => _now - _start;
         private DateTime _start = DateTime.Now;

@@ -1,11 +1,11 @@
-using System;
+using System.Collections.Generic;
 using IterationLimits;
 using NUnit.Framework;
 
 namespace IterationLimitsTests
 {
     [TestFixture]
-    public class FuncCountTests
+    public class LimitCountEnumeratorTests
     {
         private int _counter = 0;
         private const int Limited = 1_000;
@@ -26,9 +26,9 @@ namespace IterationLimitsTests
         [Test]
         public void TestUnlimited()
         {
-            Func<bool> conditionUnlimited = () => _counter < Unlimited;
+            IEnumerator<int> enumeratorUnlimited = GetEnumerator();
 
-            while (conditionUnlimited.Invoke())
+            while (enumeratorUnlimited.MoveNext())
             {
                 _counter += 1;
             }
@@ -39,15 +39,27 @@ namespace IterationLimitsTests
         [Test]
         public void TestLimited()
         {
-            Func<bool> conditionUnlimited = () => _counter < Unlimited;
-            Func<bool> conditionLimited = Limits.LimitCount(Limited, conditionUnlimited);
+            IEnumerator<int> enumeratorUnlimited = GetEnumerator();
+            IEnumerator<int> enumeratorLimited = Limits.LimitCount(Limited, enumeratorUnlimited);
 
-            while (conditionLimited.Invoke())
+            while (enumeratorLimited.MoveNext())
             {
                 _counter += 1;
             }
 
             Assert.AreEqual(Limited, _counter);
+        }
+
+        private IEnumerator<int> GetEnumerator()
+        {
+            var i = 0;
+            yield return i;
+
+            while (_counter < Unlimited)
+            {
+                i += 1;
+                yield return i;
+            }
         }
     }
 }

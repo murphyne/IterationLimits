@@ -5,6 +5,12 @@ namespace IterationLimits
 {
     public static class Limits
     {
+        /// <summary>
+        /// Limits the number of iterations.
+        /// </summary>
+        /// <param name="limit">Maximum number of iterations.</param>
+        /// <param name="condition">Original delegate to be limited.</param>
+        /// <returns>Limited delegate.</returns>
         public static Func<bool> LimitCount(int limit, Func<bool> condition)
         {
             var counter = 0;
@@ -18,6 +24,12 @@ namespace IterationLimits
             };
         }
 
+        /// <summary>
+        /// Limits the time duration of iterations.
+        /// </summary>
+        /// <param name="limit">Maximum time duration of iterations.</param>
+        /// <param name="condition">Original delegate to be limited.</param>
+        /// <returns>Limited delegate.</returns>
         public static Func<bool> LimitTime(TimeSpan limit, Func<bool> condition)
         {
             var start = DateTime.Now;
@@ -33,6 +45,13 @@ namespace IterationLimits
             };
         }
 
+        /// <summary>
+        /// Limits the number of iterations.
+        /// </summary>
+        /// <param name="limit">Maximum number of iterations.</param>
+        /// <param name="enumerator">Original enumerator to be limited.</param>
+        /// <inheritdoc cref="IEnumerator{T}"/>
+        /// <returns>Limited enumerator.</returns>
         public static IEnumerator<T> LimitCount<T>(int limit, IEnumerator<T> enumerator)
         {
             var counter = 0;
@@ -52,6 +71,13 @@ namespace IterationLimits
             return Limited();
         }
 
+        /// <summary>
+        /// Limits the time duration of iterations.
+        /// </summary>
+        /// <param name="limit">Maximum time duration of iterations.</param>
+        /// <param name="enumerator">Original enumerator to be limited.</param>
+        /// <inheritdoc cref="IEnumerator{T}"/>
+        /// <returns>Limited enumerator.</returns>
         public static IEnumerator<T> LimitTime<T>(TimeSpan limit, IEnumerator<T> enumerator)
         {
             var start = DateTime.Now;
@@ -73,6 +99,13 @@ namespace IterationLimits
             return Limited();
         }
 
+        /// <summary>
+        /// Limits the number of iterations.
+        /// </summary>
+        /// <param name="limit">Maximum number of iterations.</param>
+        /// <param name="enumerable">Original enumerable to be limited.</param>
+        /// <inheritdoc cref="IEnumerable{T}"/>
+        /// <returns>Limited enumerable.</returns>
         public static IEnumerable<T> LimitCount<T>(int limit, IEnumerable<T> enumerable)
         {
             var counter = 0;
@@ -91,6 +124,13 @@ namespace IterationLimits
             return Limited();
         }
 
+        /// <summary>
+        /// Limits the time duration of iterations.
+        /// </summary>
+        /// <param name="limit">Maximum time duration of iterations.</param>
+        /// <param name="enumerable">Original enumerable to be limited.</param>
+        /// <inheritdoc cref="IEnumerable{T}"/>
+        /// <returns>Limited enumerable.</returns>
         public static IEnumerable<T> LimitTime<T>(TimeSpan limit, IEnumerable<T> enumerable)
         {
             var start = DateTime.Now;

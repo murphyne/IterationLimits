@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IterationLimits", "src\Iter
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IterationLimitsTests", "src\IterationLimitsTests\IterationLimitsTests.csproj", "{03FE93A2-AD9E-43E2-AB32-F9D766B73BA1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IterationLimitsExamples", "src\IterationLimitsExamples\IterationLimitsExamples.csproj", "{D8DDE9BB-5D0B-4A16-BE1F-A20C6A3A822C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{03FE93A2-AD9E-43E2-AB32-F9D766B73BA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03FE93A2-AD9E-43E2-AB32-F9D766B73BA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03FE93A2-AD9E-43E2-AB32-F9D766B73BA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8DDE9BB-5D0B-4A16-BE1F-A20C6A3A822C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8DDE9BB-5D0B-4A16-BE1F-A20C6A3A822C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8DDE9BB-5D0B-4A16-BE1F-A20C6A3A822C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8DDE9BB-5D0B-4A16-BE1F-A20C6A3A822C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

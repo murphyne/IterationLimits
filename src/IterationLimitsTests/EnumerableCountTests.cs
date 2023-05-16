@@ -11,19 +11,10 @@ namespace IterationLimitsTests
         private const int Limited = 1_000;
         private const int Unlimited = 1_000_000;
 
-        private IEnumerable<int> _enumerable;
-
         [SetUp]
         public void BeforeEach()
         {
             _counter = 0;
-            _enumerable = GetEnumerable();
-        }
-
-        [TearDown]
-        public void AfterEach()
-        {
-            _enumerable = null;
         }
 
         [Test]
@@ -35,7 +26,7 @@ namespace IterationLimitsTests
         [Test]
         public void TestUnlimited()
         {
-            IEnumerable<int> enumerableUnlimited = _enumerable;
+            IEnumerable<int> enumerableUnlimited = GetEnumerable();
 
             foreach (var _ in enumerableUnlimited)
             {
@@ -48,7 +39,7 @@ namespace IterationLimitsTests
         [Test]
         public void TestLimited()
         {
-            IEnumerable<int> enumerableUnlimited = _enumerable;
+            IEnumerable<int> enumerableUnlimited = GetEnumerable();
             IEnumerable<int> enumerableLimited = Limits.LimitCount(Limited, enumerableUnlimited);
 
             foreach (var _ in enumerableLimited)

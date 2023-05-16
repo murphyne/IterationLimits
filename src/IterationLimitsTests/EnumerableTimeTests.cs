@@ -16,20 +16,11 @@ namespace IterationLimitsTests
         private static readonly TimeSpan Limited = TimeSpan.FromMilliseconds(200);
         private static readonly TimeSpan Unlimited = TimeSpan.FromMilliseconds(600);
 
-        private IEnumerable<int> _enumerable;
-
         [SetUp]
         public void BeforeEach()
         {
             _start = DateTime.Now;
             _now = DateTime.Now;
-            _enumerable = GetEnumerable();
-        }
-
-        [TearDown]
-        public void AfterEach()
-        {
-            _enumerable = null;
         }
 
         [Test]
@@ -41,7 +32,7 @@ namespace IterationLimitsTests
         [Test]
         public void TestUnlimited()
         {
-            IEnumerable<int> enumerableUnlimited = _enumerable;
+            IEnumerable<int> enumerableUnlimited = GetEnumerable();
 
             foreach (var _ in enumerableUnlimited)
             {
@@ -54,7 +45,7 @@ namespace IterationLimitsTests
         [Test]
         public void TestLimited()
         {
-            IEnumerable<int> enumerableUnlimited = _enumerable;
+            IEnumerable<int> enumerableUnlimited = GetEnumerable();
             IEnumerable<int> enumerableLimited = Limits.LimitTime(Limited, enumerableUnlimited);
 
             foreach (var _ in enumerableLimited)

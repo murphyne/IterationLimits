@@ -72,5 +72,43 @@ namespace IterationLimits
 
             return Limited();
         }
+
+        public static IEnumerable<T> LimitCount<T>(int limit, IEnumerable<T> enumerable)
+        {
+            var counter = 0;
+
+            IEnumerable<T> Limited()
+            {
+                foreach (var element in enumerable)
+                {
+                    if (counter >= limit) yield break;
+
+                    counter += 1;
+                    yield return element;
+                }
+            }
+
+            return Limited();
+        }
+
+        public static IEnumerable<T> LimitTime<T>(TimeSpan limit, IEnumerable<T> enumerable)
+        {
+            var start = DateTime.Now;
+
+            IEnumerable<T> Limited()
+            {
+                foreach (var element in enumerable)
+                {
+                    var now = DateTime.Now;
+                    var elapsed = now - start;
+
+                    if (elapsed >= limit) yield break;
+
+                    yield return element;
+                }
+            }
+
+            return Limited();
+        }
     }
 }

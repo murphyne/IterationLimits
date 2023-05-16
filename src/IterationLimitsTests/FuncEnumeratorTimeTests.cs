@@ -23,7 +23,7 @@ namespace IterationLimitsTests
         {
             _start = DateTime.Now;
             _now = DateTime.Now;
-            _enumerator = GetNumbers().GetEnumerator();
+            _enumerator = GetNumbers();
         }
 
         [TearDown]
@@ -65,7 +65,7 @@ namespace IterationLimitsTests
             Assert.That(Elapsed, Is.EqualTo(Limited).Within(Error));
         }
 
-        private IEnumerable<int> GetNumbers()
+        private IEnumerator<int> GetNumbers()
         {
             var i = 0;
             yield return i;

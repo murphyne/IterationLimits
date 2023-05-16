@@ -17,7 +17,7 @@ namespace IterationLimitsTests
         public void BeforeEach()
         {
             _counter = 0;
-            _enumerator = GetNumbers().GetEnumerator();
+            _enumerator = GetNumbers();
         }
 
         [TearDown]
@@ -59,7 +59,7 @@ namespace IterationLimitsTests
             Assert.AreEqual(Limited, _counter);
         }
 
-        private IEnumerable<int> GetNumbers()
+        private IEnumerator<int> GetNumbers()
         {
             var i = 0;
             yield return i;

@@ -59,12 +59,9 @@ namespace IterationLimitsTests
         private IEnumerable<int> GetEnumerable()
         {
             var i = 0;
-            yield return i;
-
             while (Elapsed < Unlimited)
             {
-                i += 1;
-                yield return i;
+                yield return i++;
             }
         }
     }

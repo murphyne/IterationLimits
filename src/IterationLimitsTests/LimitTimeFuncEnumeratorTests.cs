@@ -32,7 +32,7 @@ namespace IterationLimitsTests
         [Test]
         public void TestUnlimited()
         {
-            IEnumerator<int> enumerator = GetEnumerator();
+            IEnumerator<int> enumerator = GetEnumerator(Unlimited);
 
             Func<bool> conditionUnlimited = () => enumerator.MoveNext();
 
@@ -47,7 +47,7 @@ namespace IterationLimitsTests
         [Test]
         public void TestLimited()
         {
-            IEnumerator<int> enumerator = GetEnumerator();
+            IEnumerator<int> enumerator = GetEnumerator(Unlimited);
 
             Func<bool> conditionUnlimited = () => enumerator.MoveNext();
             Func<bool> conditionLimited = Limits.LimitTime(Limited, conditionUnlimited);
@@ -60,10 +60,10 @@ namespace IterationLimitsTests
             Assert.That(Elapsed, Is.EqualTo(Limited).Within(Error));
         }
 
-        private IEnumerator<int> GetEnumerator()
+        private IEnumerator<int> GetEnumerator(TimeSpan limit)
         {
             var i = 0;
-            while (Elapsed < Unlimited)
+            while (Elapsed < limit)
             {
                 yield return i++;
             }

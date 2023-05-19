@@ -27,7 +27,7 @@ namespace IterationLimitsTests
         [Test]
         public void TestUnlimited()
         {
-            IEnumerator<int> enumerator = GetEnumerator();
+            IEnumerator<int> enumerator = GetEnumerator(Unlimited);
 
             Func<bool> conditionUnlimited = () => enumerator.MoveNext();
 
@@ -42,7 +42,7 @@ namespace IterationLimitsTests
         [Test]
         public void TestLimited()
         {
-            IEnumerator<int> enumerator = GetEnumerator();
+            IEnumerator<int> enumerator = GetEnumerator(Unlimited);
 
             Func<bool> conditionUnlimited = () => enumerator.MoveNext();
             Func<bool> conditionLimited = Limits.LimitCount(Limited, conditionUnlimited);
@@ -55,10 +55,10 @@ namespace IterationLimitsTests
             Assert.AreEqual(Limited, _counter);
         }
 
-        private IEnumerator<int> GetEnumerator()
+        private IEnumerator<int> GetEnumerator(int limit)
         {
             var i = 0;
-            while (_counter < Unlimited)
+            while (_counter < limit)
             {
                 yield return i++;
             }

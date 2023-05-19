@@ -26,7 +26,7 @@ namespace IterationLimitsTests
         [Test]
         public void TestUnlimited()
         {
-            IEnumerable<int> enumerableUnlimited = GetEnumerable();
+            IEnumerable<int> enumerableUnlimited = GetEnumerable(Unlimited);
 
             foreach (var _ in enumerableUnlimited)
             {
@@ -39,7 +39,7 @@ namespace IterationLimitsTests
         [Test]
         public void TestLimited()
         {
-            IEnumerable<int> enumerableUnlimited = GetEnumerable();
+            IEnumerable<int> enumerableUnlimited = GetEnumerable(Unlimited);
             IEnumerable<int> enumerableLimited = Limits.LimitCount(Limited, enumerableUnlimited);
 
             foreach (var _ in enumerableLimited)
@@ -50,10 +50,10 @@ namespace IterationLimitsTests
             Assert.AreEqual(Limited, _counter);
         }
 
-        private IEnumerable<int> GetEnumerable()
+        private IEnumerable<int> GetEnumerable(int limit)
         {
             var i = 0;
-            while (_counter < Unlimited)
+            while (_counter < limit)
             {
                 yield return i++;
             }

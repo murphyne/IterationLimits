@@ -32,7 +32,7 @@ namespace IterationLimitsTests
         [Test]
         public void TestUnlimited()
         {
-            IEnumerable<int> enumerableUnlimited = GetEnumerable();
+            IEnumerable<int> enumerableUnlimited = GetEnumerable(Unlimited);
 
             foreach (var _ in enumerableUnlimited)
             {
@@ -45,7 +45,7 @@ namespace IterationLimitsTests
         [Test]
         public void TestLimited()
         {
-            IEnumerable<int> enumerableUnlimited = GetEnumerable();
+            IEnumerable<int> enumerableUnlimited = GetEnumerable(Unlimited);
             IEnumerable<int> enumerableLimited = Limits.LimitTime(Limited, enumerableUnlimited);
 
             foreach (var _ in enumerableLimited)
@@ -56,10 +56,10 @@ namespace IterationLimitsTests
             Assert.That(Elapsed, Is.EqualTo(Limited).Within(Error));
         }
 
-        private IEnumerable<int> GetEnumerable()
+        private IEnumerable<int> GetEnumerable(TimeSpan limit)
         {
             var i = 0;
-            while (Elapsed < Unlimited)
+            while (Elapsed < limit)
             {
                 yield return i++;
             }

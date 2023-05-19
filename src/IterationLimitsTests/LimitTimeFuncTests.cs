@@ -54,5 +54,19 @@ namespace IterationLimitsTests
 
             Assert.That(Elapsed, Is.EqualTo(Short).Within(Error));
         }
+
+        [Test]
+        public void TestUnlimitedShorterThanLimited()
+        {
+            Func<bool> conditionUnlimited = () => Elapsed < Short;
+            Func<bool> conditionLimited = Limits.LimitTime(Long, conditionUnlimited);
+
+            while (conditionLimited.Invoke())
+            {
+                _now = DateTime.Now;
+            }
+
+            Assert.That(Elapsed, Is.EqualTo(Short).Within(Error));
+        }
     }
 }

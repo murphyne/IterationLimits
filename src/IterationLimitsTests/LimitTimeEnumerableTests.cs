@@ -56,6 +56,20 @@ namespace IterationLimitsTests
             Assert.That(Elapsed, Is.EqualTo(Short).Within(Error));
         }
 
+        [Test]
+        public void TestUnlimitedShorterThanLimited()
+        {
+            IEnumerable<int> enumerableUnlimited = GetEnumerable(Short);
+            IEnumerable<int> enumerableLimited = Limits.LimitTime(Long, enumerableUnlimited);
+
+            foreach (var _ in enumerableLimited)
+            {
+                _now = DateTime.Now;
+            }
+
+            Assert.That(Elapsed, Is.EqualTo(Short).Within(Error));
+        }
+
         private IEnumerable<int> GetEnumerable(TimeSpan limit)
         {
             var i = 0;

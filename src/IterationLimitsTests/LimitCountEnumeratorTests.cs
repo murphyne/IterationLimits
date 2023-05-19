@@ -50,6 +50,20 @@ namespace IterationLimitsTests
             Assert.AreEqual(Short, _counter);
         }
 
+        [Test]
+        public void TestUnlimitedShorterThanLimited()
+        {
+            IEnumerator<int> enumeratorUnlimited = GetEnumerator(Short);
+            IEnumerator<int> enumeratorLimited = Limits.LimitCount(Long, enumeratorUnlimited);
+
+            while (enumeratorLimited.MoveNext())
+            {
+                _counter += 1;
+            }
+
+            Assert.AreEqual(Short, _counter);
+        }
+
         private IEnumerator<int> GetEnumerator(int limit)
         {
             var i = 0;

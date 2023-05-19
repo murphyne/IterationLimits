@@ -49,5 +49,19 @@ namespace IterationLimitsTests
 
             Assert.AreEqual(Short, _counter);
         }
+
+        [Test]
+        public void TestUnlimitedShorterThanLimited()
+        {
+            Func<bool> conditionUnlimited = () => _counter < Short;
+            Func<bool> conditionLimited = Limits.LimitCount(Long, conditionUnlimited);
+
+            while (conditionLimited.Invoke())
+            {
+                _counter += 1;
+            }
+
+            Assert.AreEqual(Short, _counter);
+        }
     }
 }

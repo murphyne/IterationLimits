@@ -22,8 +22,10 @@ namespace IterationLimits
                     if (counter >= limit) yield break;
 
                     counter += 1;
-                    enumerator.MoveNext();
-                    yield return enumerator.Current;
+                    if (enumerator.MoveNext())
+                        yield return enumerator.Current;
+                    else
+                        yield break;
                 }
             }
 

@@ -8,8 +8,8 @@ namespace IterationLimitsTests
     public class LimitCountEnumeratorTests
     {
         private int _counter = 0;
-        private const int Limited = 1_000;
-        private const int Unlimited = 1_000_000;
+        private const int Short = 1_000;
+        private const int Long = 1_000_000;
 
         [SetUp]
         public void BeforeEach()
@@ -26,28 +26,28 @@ namespace IterationLimitsTests
         [Test]
         public void TestUnlimited()
         {
-            IEnumerator<int> enumeratorUnlimited = GetEnumerator(Unlimited);
+            IEnumerator<int> enumeratorUnlimited = GetEnumerator(Long);
 
             while (enumeratorUnlimited.MoveNext())
             {
                 _counter += 1;
             }
 
-            Assert.AreEqual(Unlimited, _counter);
+            Assert.AreEqual(Long, _counter);
         }
 
         [Test]
         public void TestLimited()
         {
-            IEnumerator<int> enumeratorUnlimited = GetEnumerator(Unlimited);
-            IEnumerator<int> enumeratorLimited = Limits.LimitCount(Limited, enumeratorUnlimited);
+            IEnumerator<int> enumeratorUnlimited = GetEnumerator(Long);
+            IEnumerator<int> enumeratorLimited = Limits.LimitCount(Short, enumeratorUnlimited);
 
             while (enumeratorLimited.MoveNext())
             {
                 _counter += 1;
             }
 
-            Assert.AreEqual(Limited, _counter);
+            Assert.AreEqual(Short, _counter);
         }
 
         private IEnumerator<int> GetEnumerator(int limit)

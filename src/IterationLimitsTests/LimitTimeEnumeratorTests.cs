@@ -13,8 +13,8 @@ namespace IterationLimitsTests
         private DateTime _now = DateTime.Now;
 
         private static readonly TimeSpan Error = TimeSpan.FromMilliseconds(10);
-        private static readonly TimeSpan Limited = TimeSpan.FromMilliseconds(200);
-        private static readonly TimeSpan Unlimited = TimeSpan.FromMilliseconds(600);
+        private static readonly TimeSpan Short = TimeSpan.FromMilliseconds(200);
+        private static readonly TimeSpan Long = TimeSpan.FromMilliseconds(600);
 
         [SetUp]
         public void BeforeEach()
@@ -32,28 +32,28 @@ namespace IterationLimitsTests
         [Test]
         public void TestUnlimited()
         {
-            IEnumerator<int> enumeratorUnlimited = GetEnumerator(Unlimited);
+            IEnumerator<int> enumeratorUnlimited = GetEnumerator(Long);
 
             while (enumeratorUnlimited.MoveNext())
             {
                 _now = DateTime.Now;
             }
 
-            Assert.That(Elapsed, Is.EqualTo(Unlimited).Within(Error));
+            Assert.That(Elapsed, Is.EqualTo(Long).Within(Error));
         }
 
         [Test]
         public void TestLimited()
         {
-            IEnumerator<int> enumeratorUnlimited = GetEnumerator(Unlimited);
-            IEnumerator<int> enumeratorLimited = Limits.LimitTime(Limited, enumeratorUnlimited);
+            IEnumerator<int> enumeratorUnlimited = GetEnumerator(Long);
+            IEnumerator<int> enumeratorLimited = Limits.LimitTime(Short, enumeratorUnlimited);
 
             while (enumeratorLimited.MoveNext())
             {
                 _now = DateTime.Now;
             }
 
-            Assert.That(Elapsed, Is.EqualTo(Limited).Within(Error));
+            Assert.That(Elapsed, Is.EqualTo(Short).Within(Error));
         }
 
         private IEnumerator<int> GetEnumerator(TimeSpan limit)

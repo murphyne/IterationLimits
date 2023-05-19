@@ -8,8 +8,8 @@ namespace IterationLimitsTests
     public class LimitCountFuncTests
     {
         private int _counter = 0;
-        private const int Limited = 1_000;
-        private const int Unlimited = 1_000_000;
+        private const int Short = 1_000;
+        private const int Long = 1_000_000;
 
         [SetUp]
         public void BeforeEach()
@@ -26,28 +26,28 @@ namespace IterationLimitsTests
         [Test]
         public void TestUnlimited()
         {
-            Func<bool> conditionUnlimited = () => _counter < Unlimited;
+            Func<bool> conditionUnlimited = () => _counter < Long;
 
             while (conditionUnlimited.Invoke())
             {
                 _counter += 1;
             }
 
-            Assert.AreEqual(Unlimited, _counter);
+            Assert.AreEqual(Long, _counter);
         }
 
         [Test]
         public void TestLimited()
         {
-            Func<bool> conditionUnlimited = () => _counter < Unlimited;
-            Func<bool> conditionLimited = Limits.LimitCount(Limited, conditionUnlimited);
+            Func<bool> conditionUnlimited = () => _counter < Long;
+            Func<bool> conditionLimited = Limits.LimitCount(Short, conditionUnlimited);
 
             while (conditionLimited.Invoke())
             {
                 _counter += 1;
             }
 
-            Assert.AreEqual(Limited, _counter);
+            Assert.AreEqual(Short, _counter);
         }
     }
 }

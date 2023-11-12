@@ -14,13 +14,15 @@ namespace IterationLimits
         {
             var counter = 0;
 
-            return delegate
+            bool Limited()
             {
                 if (counter >= limit) return false;
 
                 counter += 1;
                 return condition?.Invoke() ?? false;
-            };
+            }
+
+            return Limited;
         }
     }
 }

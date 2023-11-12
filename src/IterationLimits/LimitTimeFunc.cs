@@ -14,7 +14,7 @@ namespace IterationLimits
         {
             var start = DateTime.Now;
 
-            return delegate
+            bool Limited()
             {
                 var now = DateTime.Now;
                 var elapsed = now - start;
@@ -22,7 +22,9 @@ namespace IterationLimits
                 if (elapsed >= limit) return false;
 
                 return condition?.Invoke() ?? false;
-            };
+            }
+
+            return Limited;
         }
     }
 }

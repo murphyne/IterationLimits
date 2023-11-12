@@ -18,17 +18,14 @@ namespace IterationLimits
 
             IEnumerator<T> Limited()
             {
-                while (true)
+                while (enumerator.MoveNext())
                 {
                     var now = DateTime.Now;
                     var elapsed = now - start;
 
                     if (elapsed >= limit) yield break;
 
-                    if (enumerator.MoveNext())
-                        yield return enumerator.Current;
-                    else
-                        yield break;
+                    yield return enumerator.Current;
                 }
             }
 

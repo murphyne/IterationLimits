@@ -15,17 +15,12 @@ namespace IterationLimits
         {
             var counter = 0;
 
-            return Limited();
-
-            IEnumerator<T> Limited()
+            while (enumerator.MoveNext())
             {
-                while (enumerator.MoveNext())
-                {
-                    if (counter >= limit) yield break;
+                if (counter >= limit) yield break;
 
-                    counter += 1;
-                    yield return enumerator.Current;
-                }
+                counter += 1;
+                yield return enumerator.Current;
             }
         }
     }

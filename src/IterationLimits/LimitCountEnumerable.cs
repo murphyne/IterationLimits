@@ -15,17 +15,12 @@ namespace IterationLimits
         {
             var counter = 0;
 
-            return Limited();
-
-            IEnumerable<T> Limited()
+            foreach (var element in enumerable)
             {
-                foreach (var element in enumerable)
-                {
-                    if (counter >= limit) yield break;
+                if (counter >= limit) yield break;
 
-                    counter += 1;
-                    yield return element;
-                }
+                counter += 1;
+                yield return element;
             }
         }
     }

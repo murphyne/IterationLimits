@@ -16,19 +16,14 @@ namespace IterationLimits
         {
             var start = DateTime.Now;
 
-            return Limited();
-
-            IEnumerator<T> Limited()
+            while (enumerator.MoveNext())
             {
-                while (enumerator.MoveNext())
-                {
-                    var now = DateTime.Now;
-                    var elapsed = now - start;
+                var now = DateTime.Now;
+                var elapsed = now - start;
 
-                    if (elapsed >= limit) yield break;
+                if (elapsed >= limit) yield break;
 
-                    yield return enumerator.Current;
-                }
+                yield return enumerator.Current;
             }
         }
     }

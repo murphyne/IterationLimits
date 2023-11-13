@@ -11,7 +11,7 @@ namespace IterationLimits
         /// <param name="limit">Maximum number of iterations.</param>
         /// <inheritdoc cref="IEnumerable{T}"/>
         /// <returns>Limited enumerable.</returns>
-        public static IEnumerable<T> LimitCount<T>(IEnumerable<T> enumerable, int limit)
+        public static IEnumerable<T> LimitCount<T>(this IEnumerable<T> enumerable, int limit)
         {
             var counter = 0;
 

@@ -12,7 +12,7 @@ namespace IterationLimits
         /// <param name="limit">Maximum time duration of iterations.</param>
         /// <inheritdoc cref="IEnumerable{T}"/>
         /// <returns>Limited enumerable.</returns>
-        public static IEnumerable<T> LimitTime<T>(IEnumerable<T> enumerable, TimeSpan limit)
+        public static IEnumerable<T> LimitTime<T>(this IEnumerable<T> enumerable, TimeSpan limit)
         {
             var start = DateTime.Now;
 

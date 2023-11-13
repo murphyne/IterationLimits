@@ -16,6 +16,8 @@ namespace IterationLimits
         {
             var start = DateTime.Now;
 
+            return Limited();
+
             IEnumerator<T> Limited()
             {
                 while (enumerator.MoveNext())
@@ -28,8 +30,6 @@ namespace IterationLimits
                     yield return enumerator.Current;
                 }
             }
-
-            return Limited();
         }
     }
 }

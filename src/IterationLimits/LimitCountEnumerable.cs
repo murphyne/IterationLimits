@@ -15,6 +15,8 @@ namespace IterationLimits
         {
             var counter = 0;
 
+            return Limited();
+
             IEnumerable<T> Limited()
             {
                 foreach (var element in enumerable)
@@ -25,8 +27,6 @@ namespace IterationLimits
                     yield return element;
                 }
             }
-
-            return Limited();
         }
     }
 }

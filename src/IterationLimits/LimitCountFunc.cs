@@ -14,6 +14,8 @@ namespace IterationLimits
         {
             var counter = 0;
 
+            return Limited;
+
             bool Limited()
             {
                 if (counter >= limit) return false;
@@ -21,8 +23,6 @@ namespace IterationLimits
                 counter += 1;
                 return condition?.Invoke() ?? false;
             }
-
-            return Limited;
         }
     }
 }

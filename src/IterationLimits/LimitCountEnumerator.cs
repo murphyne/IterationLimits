@@ -15,6 +15,8 @@ namespace IterationLimits
         {
             var counter = 0;
 
+            return Limited();
+
             IEnumerator<T> Limited()
             {
                 while (enumerator.MoveNext())
@@ -25,8 +27,6 @@ namespace IterationLimits
                     yield return enumerator.Current;
                 }
             }
-
-            return Limited();
         }
     }
 }

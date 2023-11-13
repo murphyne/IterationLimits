@@ -14,6 +14,8 @@ namespace IterationLimits
         {
             var start = DateTime.Now;
 
+            return Limited;
+
             bool Limited()
             {
                 var now = DateTime.Now;
@@ -23,8 +25,6 @@ namespace IterationLimits
 
                 return condition?.Invoke() ?? false;
             }
-
-            return Limited;
         }
     }
 }

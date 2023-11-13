@@ -5,6 +5,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
   <PropertyGroup>
     <PackRelease>true</PackRelease>
@@ -14,5 +15,6 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="$(RepoRootPath)\README.md" Pack="true" PackagePath="\" />
+    <None Include="$(RepoRootPath)\LICENSE" Pack="true" PackagePath="\" />
   </ItemGroup>
 </Project>

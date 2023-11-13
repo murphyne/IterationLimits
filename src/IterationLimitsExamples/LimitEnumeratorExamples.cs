@@ -44,6 +44,19 @@ public class LimitEnumeratorExamples
         }
     }
 
+    public static void ExampleLimitTimeExternal()
+    {
+        IEnumerator<int> enumerator = GetEnumerator();
+        IEnumerator<int> enumeratorLimited = Limits.LimitTime(enumerator, TimeSpan.FromSeconds(0.005), () => DateTime.Now);
+
+        var start = DateTime.Now;
+
+        while (enumeratorLimited.MoveNext())
+        {
+            Console.WriteLine($"{enumerator.Current,2} - {DateTime.Now - start}");
+        }
+    }
+
     private static IEnumerator<int> GetEnumerator()
     {
         yield return  1;

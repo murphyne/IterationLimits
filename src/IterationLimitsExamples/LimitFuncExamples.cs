@@ -48,4 +48,19 @@ public class LimitFuncExamples
             Console.WriteLine($"{counter,2} - {DateTime.Now - start}");
         }
     }
+
+    public static void ExampleLimitTimeExternal()
+    {
+        var counter = 0;
+
+        Func<bool> condition = () => counter++ < 20;
+        Func<bool> conditionLimited = Limits.LimitTime(condition, TimeSpan.FromSeconds(0.005), () => DateTime.Now);
+
+        var start = DateTime.Now;
+
+        while (conditionLimited.Invoke())
+        {
+            Console.WriteLine($"{counter,2} - {DateTime.Now - start}");
+        }
+    }
 }

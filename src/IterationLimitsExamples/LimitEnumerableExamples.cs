@@ -44,6 +44,19 @@ public class LimitEnumerableExamples
         }
     }
 
+    public static void ExampleLimitTimeExternal()
+    {
+        IEnumerable<int> enumerable = GetEnumerable();
+        IEnumerable<int> enumerableLimited = Limits.LimitTime(enumerable, TimeSpan.FromSeconds(0.005), () => DateTime.Now);
+
+        var start = DateTime.Now;
+
+        foreach (var item in enumerableLimited)
+        {
+            Console.WriteLine($"{item,2} - {DateTime.Now - start}");
+        }
+    }
+
     private static IEnumerable<int> GetEnumerable()
     {
         yield return  1;

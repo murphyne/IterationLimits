@@ -50,6 +50,21 @@ public class LimitFuncEnumeratorExamples
         }
     }
 
+    public static void ExampleLimitTimeExternal()
+    {
+        IEnumerator<int> enumerator = GetEnumerator();
+
+        Func<bool> condition = () => enumerator.MoveNext();
+        Func<bool> conditionLimited = Limits.LimitTime(condition, TimeSpan.FromSeconds(0.005), () => DateTime.Now);
+
+        var start = DateTime.Now;
+
+        while (conditionLimited.Invoke())
+        {
+            Console.WriteLine($"{enumerator.Current,2} - {DateTime.Now - start}");
+        }
+    }
+
     private static IEnumerator<int> GetEnumerator()
     {
         yield return  1;

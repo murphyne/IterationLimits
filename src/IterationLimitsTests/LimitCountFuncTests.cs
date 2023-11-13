@@ -40,7 +40,7 @@ namespace IterationLimitsTests
         public void TestLimited()
         {
             Func<bool> conditionUnlimited = () => _counter < Long;
-            Func<bool> conditionLimited = Limits.LimitCount(Short, conditionUnlimited);
+            Func<bool> conditionLimited = Limits.LimitCount(conditionUnlimited, Short);
 
             while (conditionLimited.Invoke())
             {
@@ -54,7 +54,7 @@ namespace IterationLimitsTests
         public void TestUnlimitedShorterThanLimited()
         {
             Func<bool> conditionUnlimited = () => _counter < Short;
-            Func<bool> conditionLimited = Limits.LimitCount(Long, conditionUnlimited);
+            Func<bool> conditionLimited = Limits.LimitCount(conditionUnlimited, Long);
 
             while (conditionLimited.Invoke())
             {

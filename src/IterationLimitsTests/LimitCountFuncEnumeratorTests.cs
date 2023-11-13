@@ -45,7 +45,7 @@ namespace IterationLimitsTests
             IEnumerator<int> enumerator = GetEnumerator(Long);
 
             Func<bool> conditionUnlimited = () => enumerator.MoveNext();
-            Func<bool> conditionLimited = Limits.LimitCount(Short, conditionUnlimited);
+            Func<bool> conditionLimited = Limits.LimitCount(conditionUnlimited, Short);
 
             while (conditionLimited.Invoke())
             {
@@ -61,7 +61,7 @@ namespace IterationLimitsTests
             IEnumerator<int> enumerator = GetEnumerator(Short);
 
             Func<bool> conditionUnlimited = () => enumerator.MoveNext();
-            Func<bool> conditionLimited = Limits.LimitCount(Long, conditionUnlimited);
+            Func<bool> conditionLimited = Limits.LimitCount(conditionUnlimited, Long);
 
             while (conditionLimited.Invoke())
             {

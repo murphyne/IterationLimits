@@ -7,11 +7,11 @@ namespace IterationLimits
         /// <summary>
         /// Limits the number of iterations.
         /// </summary>
-        /// <param name="limit">Maximum number of iterations.</param>
         /// <param name="enumerable">Original enumerable to be limited.</param>
+        /// <param name="limit">Maximum number of iterations.</param>
         /// <inheritdoc cref="IEnumerable{T}"/>
         /// <returns>Limited enumerable.</returns>
-        public static IEnumerable<T> LimitCount<T>(int limit, IEnumerable<T> enumerable)
+        public static IEnumerable<T> LimitCount<T>(IEnumerable<T> enumerable, int limit)
         {
             var counter = 0;
 

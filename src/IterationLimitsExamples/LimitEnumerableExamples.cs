@@ -21,7 +21,7 @@ public class LimitEnumerableExamples
     public static void ExampleLimitCount()
     {
         IEnumerable<int> enumerable = GetEnumerable();
-        IEnumerable<int> enumerableLimited = Limits.LimitCount(10, enumerable);
+        IEnumerable<int> enumerableLimited = Limits.LimitCount(enumerable, 10);
 
         var start = DateTime.Now;
 
@@ -34,7 +34,7 @@ public class LimitEnumerableExamples
     public static void ExampleLimitTime()
     {
         IEnumerable<int> enumerable = GetEnumerable();
-        IEnumerable<int> enumerableLimited = Limits.LimitTime(TimeSpan.FromSeconds(0.005), enumerable);
+        IEnumerable<int> enumerableLimited = Limits.LimitTime(enumerable, TimeSpan.FromSeconds(0.005));
 
         var start = DateTime.Now;
 

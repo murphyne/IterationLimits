@@ -25,7 +25,7 @@ public class LimitFuncEnumeratorExamples
         IEnumerator<int> enumerator = GetEnumerator();
 
         Func<bool> condition = () => enumerator.MoveNext();
-        Func<bool> conditionLimited = Limits.LimitCount(10, condition);
+        Func<bool> conditionLimited = Limits.LimitCount(condition, 10);
 
         var start = DateTime.Now;
 
@@ -40,7 +40,7 @@ public class LimitFuncEnumeratorExamples
         IEnumerator<int> enumerator = GetEnumerator();
 
         Func<bool> condition = () => enumerator.MoveNext();
-        Func<bool> conditionLimited = Limits.LimitTime(TimeSpan.FromSeconds(0.005), condition);
+        Func<bool> conditionLimited = Limits.LimitTime(condition, TimeSpan.FromSeconds(0.005));
 
         var start = DateTime.Now;
 

@@ -8,11 +8,11 @@ namespace IterationLimits
         /// <summary>
         /// Limits the time duration of iterations.
         /// </summary>
-        /// <param name="limit">Maximum time duration of iterations.</param>
         /// <param name="enumerator">Original enumerator to be limited.</param>
+        /// <param name="limit">Maximum time duration of iterations.</param>
         /// <inheritdoc cref="IEnumerator{T}"/>
         /// <returns>Limited enumerator.</returns>
-        public static IEnumerator<T> LimitTime<T>(TimeSpan limit, IEnumerator<T> enumerator)
+        public static IEnumerator<T> LimitTime<T>(IEnumerator<T> enumerator, TimeSpan limit)
         {
             var start = DateTime.Now;
 

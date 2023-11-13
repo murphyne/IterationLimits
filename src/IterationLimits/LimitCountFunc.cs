@@ -7,10 +7,10 @@ namespace IterationLimits
         /// <summary>
         /// Limits the number of iterations.
         /// </summary>
-        /// <param name="limit">Maximum number of iterations.</param>
         /// <param name="condition">Original delegate to be limited.</param>
+        /// <param name="limit">Maximum number of iterations.</param>
         /// <returns>Limited delegate.</returns>
-        public static Func<bool> LimitCount(int limit, Func<bool> condition)
+        public static Func<bool> LimitCount(Func<bool> condition, int limit)
         {
             var counter = 0;
 

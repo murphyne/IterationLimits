@@ -45,7 +45,7 @@ namespace IterationLimitsTests
         public void TestLimited()
         {
             Func<bool> conditionUnlimited = () => Elapsed < Long;
-            Func<bool> conditionLimited = Limits.LimitTime(Short, conditionUnlimited);
+            Func<bool> conditionLimited = Limits.LimitTime(conditionUnlimited, Short);
 
             while (conditionLimited.Invoke())
             {
@@ -59,7 +59,7 @@ namespace IterationLimitsTests
         public void TestUnlimitedShorterThanLimited()
         {
             Func<bool> conditionUnlimited = () => Elapsed < Short;
-            Func<bool> conditionLimited = Limits.LimitTime(Long, conditionUnlimited);
+            Func<bool> conditionLimited = Limits.LimitTime(conditionUnlimited, Long);
 
             while (conditionLimited.Invoke())
             {

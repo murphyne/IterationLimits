@@ -46,7 +46,7 @@ namespace IterationLimitsTests
         public void TestLimited()
         {
             IEnumerable<int> enumerableUnlimited = GetEnumerable(Long);
-            IEnumerable<int> enumerableLimited = Limits.LimitTime(Short, enumerableUnlimited);
+            IEnumerable<int> enumerableLimited = Limits.LimitTime(enumerableUnlimited, Short);
 
             foreach (var _ in enumerableLimited)
             {
@@ -60,7 +60,7 @@ namespace IterationLimitsTests
         public void TestUnlimitedShorterThanLimited()
         {
             IEnumerable<int> enumerableUnlimited = GetEnumerable(Short);
-            IEnumerable<int> enumerableLimited = Limits.LimitTime(Long, enumerableUnlimited);
+            IEnumerable<int> enumerableLimited = Limits.LimitTime(enumerableUnlimited, Long);
 
             foreach (var _ in enumerableLimited)
             {

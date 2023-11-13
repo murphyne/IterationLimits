@@ -24,7 +24,7 @@ public class LimitFuncExamples
         var counter = 0;
 
         Func<bool> condition = () => counter++ < 20;
-        Func<bool> conditionLimited = Limits.LimitCount(10, condition);
+        Func<bool> conditionLimited = Limits.LimitCount(condition, 10);
 
         var start = DateTime.Now;
 
@@ -39,7 +39,7 @@ public class LimitFuncExamples
         var counter = 0;
 
         Func<bool> condition = () => counter++ < 20;
-        Func<bool> conditionLimited = Limits.LimitTime(TimeSpan.FromSeconds(0.005), condition);
+        Func<bool> conditionLimited = Limits.LimitTime(condition, TimeSpan.FromSeconds(0.005));
 
         var start = DateTime.Now;
 

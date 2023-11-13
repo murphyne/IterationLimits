@@ -40,7 +40,7 @@ namespace IterationLimitsTests
         public void TestLimited()
         {
             IEnumerator<int> enumeratorUnlimited = GetEnumerator(Long);
-            IEnumerator<int> enumeratorLimited = Limits.LimitCount(Short, enumeratorUnlimited);
+            IEnumerator<int> enumeratorLimited = Limits.LimitCount(enumeratorUnlimited, Short);
 
             while (enumeratorLimited.MoveNext())
             {
@@ -54,7 +54,7 @@ namespace IterationLimitsTests
         public void TestUnlimitedShorterThanLimited()
         {
             IEnumerator<int> enumeratorUnlimited = GetEnumerator(Short);
-            IEnumerator<int> enumeratorLimited = Limits.LimitCount(Long, enumeratorUnlimited);
+            IEnumerator<int> enumeratorLimited = Limits.LimitCount(enumeratorUnlimited, Long);
 
             while (enumeratorLimited.MoveNext())
             {

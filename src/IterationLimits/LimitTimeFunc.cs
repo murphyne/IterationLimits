@@ -7,10 +7,10 @@ namespace IterationLimits
         /// <summary>
         /// Limits the time duration of iterations.
         /// </summary>
-        /// <param name="limit">Maximum time duration of iterations.</param>
         /// <param name="condition">Original delegate to be limited.</param>
+        /// <param name="limit">Maximum time duration of iterations.</param>
         /// <returns>Limited delegate.</returns>
-        public static Func<bool> LimitTime(TimeSpan limit, Func<bool> condition)
+        public static Func<bool> LimitTime(Func<bool> condition, TimeSpan limit)
         {
             var start = DateTime.Now;
 

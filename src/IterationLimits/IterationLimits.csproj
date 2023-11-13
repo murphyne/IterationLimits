@@ -4,9 +4,15 @@
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+  <PropertyGroup>
     <PackRelease>true</PackRelease>
     <PublishRelease>true</PublishRelease>
     <EnablePackageValidation>true</EnablePackageValidation>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
+  <ItemGroup>
+    <None Include="$(RepoRootPath)\README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
 </Project>

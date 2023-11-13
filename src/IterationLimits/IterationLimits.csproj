@@ -4,8 +4,12 @@
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup>
+    <PackageId>IterationLimits</PackageId>
+    <Description>Collection of methods to limit potentially infinite loops</Description>
+    <Version>1.0.0</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <RepositoryUrl>https://github.com/murphyne/IterationTools</RepositoryUrl>
   </PropertyGroup>
   <PropertyGroup>
     <PackRelease>true</PackRelease>
